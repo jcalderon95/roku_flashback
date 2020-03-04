@@ -1,0 +1,55 @@
+header{
+    background-color: $background_color;
+
+    .headerCon{
+        max-width: 1200px;
+        margin: 0 auto;
+        padding-left: 20px;
+        padding-right: 20px;
+        padding-top: 30px;
+        display: flex;
+
+        #navLogo{
+            width: 130px;
+        }
+
+        nav{
+            ul{
+              display: flex;
+
+              li{
+                  margin-left: 30px;
+                  margin-top: 10px;
+                  transition: all .3s ease-in;
+
+                a{
+                    font-size: 20px;
+                    color: #ffffff;
+                    text-decoration: none;
+                    font-family: $main-font;
+                    font-weight: 400;
+                    font-style: normal;
+
+                    &:hover{
+                      color: rgb(187, 187, 186);
+                    }
+                }
+
+            
+              }
+            }
+        }
+        
+
+        #userCon{
+          margin-left: auto;
+
+          
+          #logButton{
+            width: 30px;
+            padding: 10px 10px 10px;
+          }
+        }
+    }
+    
+}
