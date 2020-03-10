@@ -9,11 +9,12 @@
     <link  href="css/reset.css" rel="stylesheet" type="text/css">
     <link  href="css/main.css"  rel="stylesheet" type="text/css">
 
-    <script src="https://unpkg.com/vue"></script>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
     <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
 </head>
 <body>
     <h1 class="hidden">Roku Video Streaming App</h1>
+
 <main id="app">
     <header>
         <div class="headerCon">
@@ -40,9 +41,13 @@
         </div>
     </header>
 
-
+    <router-view>   
+    </router-view>
     
-    <footer>
+    
+</main>
+
+<footer>
     <h2 class="hidden">Footer</h2>
         <div id="footerCon">
 
@@ -58,9 +63,9 @@
 
             <h3 id="copyRight">© Copyright 2020 Roku, Inc.</h3>
         </div> 
-    </footer>
-</main>
+    </footer> 
+<script type="module" src="js/main.js"></script>
 
-    <script type="module" src="js/main.js"></script>
+
 </body>
 </html>

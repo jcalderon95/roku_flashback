@@ -11,7 +11,7 @@ Building a Roku "flashback" media streaming website featuring music, tv shows an
 ## Getting Started
 
 * Open Run your server ```MAMP``` or ```WAMP```
-* Clone the Repo inside the root direcory of your server ```https://github.com/jcalderon95/calderon_jimmy_portfolio.git```
+* Clone the Repo inside the root direcory of your server ```https://github.com/jcalderon95/roku_flashback.git```
 * Go to PHPMyAdmin```-> create new database```
 * Create a Database called:```db_roku```
 * Import the database inside Database folder
@@ -32,6 +32,6 @@ Building a Roku "flashback" media streaming website featuring music, tv shows an
 
 ## Author
 
-Jimmy Calderon - Web Developer
-Sonali Victor - Designer
+* **Jimmy Calderon - Web Developer**
+* **Sonali Victor - Designer**
 
