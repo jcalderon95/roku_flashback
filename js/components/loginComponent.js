@@ -60,7 +60,7 @@ export default {
                         } else {
                             this.$emit("authenticated", true, data);
                             this.formFilled = false;
-                            // this.$router.replace({ name: "users" });
+                            this.$router.replace({ name: "users" });
                         }
                     })
                     .catch(function (error) {

@@ -25,16 +25,17 @@
             <h2 class="hidden">Main Navigation</h2>
             <nav>
 
-                <ul v-if="authenticated">
-                    <li><a href="#">Home</a></li>
+                <!-- <ul v-if="authenticated">
+                    <li><a><router-link :to="{ path: 'users' }">Users </router-link></a></li>
                     <li><a href="#">Movies</a></li>
                     <li><a href="#">TV Series</a></li>
                     <li><a href="#">Music</a></li>
-                </ul>
+                </ul> -->
             </nav>
 
             <div id="userCon" v-if="authenticated">
-                <img src="images/log-in-out.svg" alt="Log Button" id="logButton">
+                <img v-if="administrator" src="images/settings.svg" alt="Settings Button" id="logButton">
+                <img src="images/log-in-out.svg" alt="Log Button" id="logButton" v-on:click="logout()">
             </div>
         
             
