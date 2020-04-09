@@ -52,14 +52,14 @@ export default {
                     .then(res => res.json())
                     .then(data => {
                         if (typeof data != "object") { // means that we're not getting a user object back
-                            console.warn(data);
-                            // // just for testing
-                            alert("authentication failed, please try again");
-                            console.log("wrong");
+                            // console.warn(data);
+                            // // // just for testing
+                            // alert("authentication failed, please try again");
+                            // console.log("wrong");
+                            this.authenticationFailed = true;
                         } else {
                             this.$emit("authenticated", true, data);
                             this.formFilled = false;
-
                             // this.$router.replace({ name: "users" });
                         }
                     })
