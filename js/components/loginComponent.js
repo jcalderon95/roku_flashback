@@ -54,7 +54,7 @@ export default {
                         if (typeof data != "object") { // means that we're not getting a user object back
                             // console.warn(data);
                             // // // just for testing
-                            // alert("authentication failed, please try again");
+                            alert("authentication failed, please try again");
                             // console.log("wrong");
                             this.authenticationFailed = true;
                         } else {
