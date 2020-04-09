@@ -20,9 +20,42 @@ import router from "./components/Router.js";
       setAuthenticated(status, data) {
         this.authenticated = status;
         this.user = data;
+      },
+
+      logout() {
+        // push user back to login page
+        this.$router.push({ name: "login" });
+        this.authenticated = false;
+
+        if(localStorage.getItem("cachedUser")) {
+          localStorage.removeItem("cachedUser");
+        }
+
+        if(localStorage.getItem("cachedVideo")){
+          localStorage.removeItem("cachedVideo");
+        }
       }
 
     },
+    
+    created: function(){
+      // check for a user in local storage
+      // if we've logged in before this will be here until we manually remove it
+
+      if(localStorage.getItem("cachedUser")) {
+        let user = JSON.parse(localStorage.getItem("cachedUser"));
+
+        this.authenticated = true;
+        this.user = user;
+
+        // console.log(user.permissions);
+        
+        // this.$router.push({ name: "users"})
+      }else{
+        this.$router.push({ name: "login" }).catch(err => { });
+      } 
+  },
+
 
     router: router
   }).$mount("#app");
