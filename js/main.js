@@ -10,8 +10,7 @@ import router from "./components/Router.js";
     data: {
       authenticated: false,
       administrator: false,
-
-
+      showNav: false,
       user: [],
 
     },
@@ -20,6 +19,15 @@ import router from "./components/Router.js";
       setAuthenticated(status, data) {
         this.authenticated = status;
         this.user = data;
+      },
+
+      ShowNavigation(user){
+        this.user = user;
+        this.showNav = true;
+      },
+
+      hideNav(){
+        this.showNav = false;
       },
 
       logout() {
@@ -47,20 +55,14 @@ import router from "./components/Router.js";
 
         this.authenticated = true;
         this.user = user;
-
-        // console.log(user.permissions);
-        
-        // this.$router.push({ name: "users"})
+        this.showNav = true;
       }else{
         this.$router.push({ name: "login" }).catch(err => { });
       }
       
-      // console.log(this.user.permissions);
       if (this.user.permissions === 1 || this.user.permissions === "1") {
-        console.log("kid");
         this.$router.push({ name: "kids" })
       }  else if (this.user.permissions > 1 || this.user.permissions > "1") {
-        console.log("adult");
         this.$router.push({ name: "adults" })
       }
   },

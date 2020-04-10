@@ -4,7 +4,7 @@ export default {
 
     template: `
     <div id="AdultsProfile">
-		<h1>Adutls Profile</h1>
+		<h1 class="hidden">Adutls Profile</h1>
 
 		<div class="filterButtons">
 			<button @click="fetchVideo()">Movies</button>

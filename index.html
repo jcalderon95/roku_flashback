@@ -25,15 +25,20 @@
             <h2 class="hidden">Main Navigation</h2>
             <nav>
 
-                <ul v-if="authenticated">
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">Movies</a></li>
-                    <li><a href="#">TV Series</a></li>
-                    <li><a href="#">Music</a></li>
+                <ul v-if="showNav">
+                    
+                    <li ><router-link :to="{ name: 'users'}">
+                        <a @click="hideNav" href="#">Users</a>
+                    </router-link></li>
+                    
+                    <!-- <li ><a href="#">Movies</a></li>
+                    <li ><a href="#">TV Series</a></li>
+                    <li><a href="#">Music</a></li> -->
                 </ul>
             </nav>
 
             <div id="userCon" v-if="authenticated">
+                <img v-if="showNav" :src="'images/users/' + user.avatar" alt="Log Button" id="avatarSmall">
                 <img src="images/log-in-out.svg" alt="Log Button" id="logButton" @click="logout">
             </div>
         
@@ -41,7 +46,7 @@
         </div>
     </header>
 
-    <router-view @authenticated="setAuthenticated"/>
+    <router-view @shownav="ShowNavigation" @authenticated="setAuthenticated"/>
     
     
 </main>
