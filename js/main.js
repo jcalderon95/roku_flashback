@@ -53,7 +53,16 @@ import router from "./components/Router.js";
         // this.$router.push({ name: "users"})
       }else{
         this.$router.push({ name: "login" }).catch(err => { });
-      } 
+      }
+      
+      // console.log(this.user.permissions);
+      if (this.user.permissions === 1 || this.user.permissions === "1") {
+        console.log("kid");
+        this.$router.push({ name: "kids" })
+      }  else if (this.user.permissions > 1 || this.user.permissions > "1") {
+        console.log("adult");
+        this.$router.push({ name: "adults" })
+      }
   },
 
 
@@ -61,7 +70,7 @@ import router from "./components/Router.js";
   }).$mount("#app");
 
   router.beforeEach((to, from, next) => {
-    console.log('router guard fired!', to, from, vm.authenticated);
+    // console.log('router guard fired!', to, from, vm.authenticated);
 
     if (vm.authenticated == false) {
       next("/login");
