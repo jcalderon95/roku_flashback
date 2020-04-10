@@ -1,12 +1,16 @@
 export default {
-    name: "AddUser",
+    name: "EditUser",
+
+    props: ['currentuser'],
 
     template: `
     <div>
     
-        <h1>Add User</h1>
+        <h1>Eidt User</h1>
 
         <div>
+            <img :src="'images/users/' + currentuser.avatar" >
+            <h2>{{ currentuser.userfname }}</h2>
             <form>
             <label for="name">Name</label>
             <input required v-model="input.name" type="text" name="name" id="name">
@@ -43,8 +47,9 @@ export default {
                 <option value="0">No</option>
                 <option value="1">Yes</option>
             </select>
+
             
-            <button @click.prevent="addUser" type="submit" >Add User</button>
+            <button @click.prevent="editUser" type="submit" >Edit User</button>
             <button @click="goBack">Cancel</button>
             
             </form>
@@ -62,7 +67,8 @@ export default {
                 email: "",
                 avatar: "",
                 permissions: "",
-                admin: ""
+                admin: "",
+                id: this.currentuser.id
             }
 		}
 	},
@@ -72,8 +78,8 @@ export default {
             this.$router.push({ name: "manageUsers" });
         },
 
-        addUser(){
-            console.log('adding user');
+        editUser(){
+            console.log('fired');
             // this.$router.push({ name: "manageUsers" });
             if (this.input.username != "" && this.input.password != ""  && this.input.name != "" && this.input.email != "" && this.input.avatar != "" && this.input.permissions != "" && this.input.admin != ""){
 
@@ -86,9 +92,10 @@ export default {
                 formData.append("avatar", this.input.avatar);
                 formData.append("permissions", this.input.permissions);
                 formData.append("admin", this.input.admin);
+                formData.append("id", this.input.id);
                 // console.log(formData);
                 // debugger;
-                let url = `./admin/admin_createuser.php`;
+                let url = `./admin/admin_edituser.php`;
 
                 fetch(url, {
                     method: 'POST',

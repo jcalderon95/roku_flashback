@@ -9,9 +9,9 @@ export default {
         <div id="allUsers">
 
             <div v-for="(user, index) in userList" :key="index">
-                <img :src="'images/users/' + user.avatar" class="rounded-circle img-fluid">
+                <img :src="'images/users/' + user.avatar" >
                 <p>{{ user.userfname }}</p>
-                <button>Edit</button>
+                <button @click="navToEditUser(user)">Edit</button>
                 <button @click="deletUser(user)">Delete</button>
             </div>
             
@@ -54,6 +54,10 @@ export default {
         
         navToAddUser(){
             this.$router.push({ name: "addUser" });
+        },
+
+        navToEditUser(user){
+            this.$router.push({ name: "editUser", params: { currentuser: user } });
         },
 
         deletUser(user){

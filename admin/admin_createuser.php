@@ -14,13 +14,9 @@ if(isset($_POST['username'])){
         'admin'=>trim($_POST['admin']),
     );
 
-
-
-    // var_dump($user);
     $message = createUser($user);
     echo $message;
 
 }
-
 
 ?>

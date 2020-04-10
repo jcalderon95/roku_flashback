@@ -29,25 +29,6 @@ function createUser($user){
     }
 }
 
-// function getSingleUser($id){
-//     $pdo = Database::getInstance()->getConnection();
-//     //TODO: execute the proper SQL query to fetch the user data whose user_id = $id
-//     $get_user_query = 'SELECT * FROM tbl_user WHERE user_id = :id';
-//     $get_user_set = $pdo->prepare($get_user_query);
-//     $get_user_result = $get_user_set->execute(
-//         array(
-//             ':id'=>$id
-//         )
-//     );
-
-//     //TODO: if the execution is successful, return the user data
-//     // Otherwise, return an error message
-//     if($get_user_result){
-//         return $get_user_set;
-//     }else{
-//         return 'There was a problem accessing the user';
-//     }
-// }
 
 function getAllUsers(){
     $pdo = Database::getInstance()->getConnection();
@@ -82,21 +63,24 @@ function getAllUsers(){
     }
 }
 
-function editUser($id, $fname, $username, $password, $email){
+function editUser($user){
     //TODO: set up database connection
     $pdo = Database::getInstance()->getConnection();
 
     //TODO: Run the proper SQL query to update tbl_user with proper values
     $update_user_query = 'UPDATE tbl_user SET user_fname = :fname, user_name = :username,';
-    $update_user_query .= ' user_pass=:password, user_email =:email WHERE user_id = :id';
+    $update_user_query .= ' user_pass=:password, user_email =:email, user_avatar = :avatar, user_permissions = :permissions, user_admin = :admin WHERE user_id = :id';
     $update_user_set = $pdo->prepare($update_user_query);
     $update_user_result = $update_user_set->execute(
         array(
-            ':fname'=>$fname,
-            ':username'=>$username,
-            ':password'=>$password,
-            ':email'=>$email,
-            ':id'=>$id
+            ':fname'=>$user['fname'],
+            ':username'=>$user['username'],
+            ':password'=>$user['password'],
+            ':email'=>$user['email'],
+            ':avatar'=>$user['avatar'],
+            ':permissions'=>$user['permissions'],
+            ':admin'=>$user['admin'],
+            ':id'=>$user['id']
         )
     );
 
@@ -104,9 +88,11 @@ function editUser($id, $fname, $username, $password, $email){
     // exit;
 
     if($update_user_result){
-        redirect_to('index.php');
+        $message = 'User edited successfully';
+        return json_encode($message);
     }else{
-        return 'Guess you got canned...';
+        $message = 'Could not edit user';
+        return json_encode($message);
     }
 }
 
