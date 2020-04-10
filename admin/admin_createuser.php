@@ -1,18 +1,26 @@
 <?php 
 require_once '../load.php';
-confirm_logged_in();
 
-if(isset($_POST['submit'])){
-    $fname = trim($_POST['fname']);
-    $username = trim($_POST['username']);
-    $password = trim($_POST['password']);
-    $email = trim($_POST['email']);
 
-    if(empty($email) || empty($password) || empty($username) || empty($fname)){
-        $message = 'Please fill the required fields';
-    }else{
-        $message = createUser($fname, $username, $password, $email);
-    }
+if(isset($_POST['username'])){
+
+    $user = array(
+        'fname'=>trim($_POST['fname']),
+        'username'=>trim($_POST['username']),
+        'password'=>trim($_POST['password']),
+        'email'=>trim($_POST['email']),
+        'avatar'=>trim($_POST['avatar']),
+        'permissions'=>trim($_POST['permissions']),
+        'admin'=>trim($_POST['admin']),
+    );
+
+
+
+    // var_dump($user);
+    $message = createUser($user);
+    echo $message;
+
 }
+
 
 ?>

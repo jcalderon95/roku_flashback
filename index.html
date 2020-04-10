@@ -28,7 +28,7 @@
                 <ul v-if="showNav">
                     
                     <li ><router-link :to="{ name: 'users'}">
-                        <a @click="hideNav" href="#">Users</a>
+                        <a href="#">Users</a>
                     </router-link></li>
                     
                     <!-- <li ><a href="#">Movies</a></li>
@@ -38,7 +38,11 @@
             </nav>
 
             <div id="userCon" v-if="authenticated">
-                <img v-if="showNav" :src="'images/users/' + user.avatar" alt="Log Button" id="avatarSmall">
+                <router-link :to="{ name: 'manageUsers'}">
+                    <img v-if="administrator" src="images/settings.svg" alt="Log Button" id="avatarSmall">
+                </router-link>
+
+                <img v-if="showNav" :src="'images/users/' + user.avatar" alt="User Avatar" id="avatarSmall">
                 <img src="images/log-in-out.svg" alt="Log Button" id="logButton" @click="logout">
             </div>
         

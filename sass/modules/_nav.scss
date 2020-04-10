@@ -44,11 +44,12 @@ header{
 
         #userCon{
           margin-left: auto;
+          width: 150px;
 
-          
           #logButton{
-            width: 30px;
-            padding: 10px 10px 10px;
+            max-width: 40px;
+            margin-left: a;
+            // padding: 10px 10px 10px;
           }
 
           #avatarSmall{

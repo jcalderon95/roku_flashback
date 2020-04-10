@@ -1,49 +1,53 @@
 <?php 
-function createUser($fname, $username, $password, $email){
+function createUser($user){
     $pdo = Database::getInstance()->getConnection();
     
-    //TODO: finish the below so that it can run a SQL query
-    // to create a new user with provided data
-    $create_user_query = 'INSERT INTO tbl_user(user_fname, user_name, user_pass, user_email, user_ip)';
-    $create_user_query .= ' VALUES(:fname, :username, :password, :email, "no" )';
+    $create_user_query = 'INSERT INTO tbl_user(user_fname, user_name, user_pass, user_email, user_avatar, user_permissions, user_admin)';
+    $create_user_query .= ' VALUES( :fname, :username, :password, :email, :avatar, :permissions, :admin )';
 
     $create_user_set = $pdo->prepare($create_user_query);
     $create_user_result = $create_user_set->execute(
         array(
-            ':fname'=>$fname,
-            ':username'=>$username,
-            ':password'=>$password,
-            ':email'=>$email,
+            ':fname'=>$user['fname'],
+            ':username'=>$user['username'],
+            ':password'=>$user['password'],
+            ':email'=>$user['email'],
+            ':avatar'=>$user['avatar'],
+            ':permissions'=>$user['permissions'],
+            ':admin'=>$user['admin']
         )
     );
-    //TODO: redirect to index.php if creat user successfully
-    // otherwise, return a error message
+    // echo $create_user_set->debugDumpParams();
+    // exit;
+
     if($create_user_result){
-        redirect_to('index.php');
+        $message =  'User added';
+        return json_encode($message);
     }else{
-        return 'The user did not go through';
+        $message =  'The user did not go through';
+        return json_encode($message);
     }
 }
 
-function getSingleUser($id){
-    $pdo = Database::getInstance()->getConnection();
-    //TODO: execute the proper SQL query to fetch the user data whose user_id = $id
-    $get_user_query = 'SELECT * FROM tbl_user WHERE user_id = :id';
-    $get_user_set = $pdo->prepare($get_user_query);
-    $get_user_result = $get_user_set->execute(
-        array(
-            ':id'=>$id
-        )
-    );
+// function getSingleUser($id){
+//     $pdo = Database::getInstance()->getConnection();
+//     //TODO: execute the proper SQL query to fetch the user data whose user_id = $id
+//     $get_user_query = 'SELECT * FROM tbl_user WHERE user_id = :id';
+//     $get_user_set = $pdo->prepare($get_user_query);
+//     $get_user_result = $get_user_set->execute(
+//         array(
+//             ':id'=>$id
+//         )
+//     );
 
-    //TODO: if the execution is successful, return the user data
-    // Otherwise, return an error message
-    if($get_user_result){
-        return $get_user_set;
-    }else{
-        return 'There was a problem accessing the user';
-    }
-}
+//     //TODO: if the execution is successful, return the user data
+//     // Otherwise, return an error message
+//     if($get_user_result){
+//         return $get_user_set;
+//     }else{
+//         return 'There was a problem accessing the user';
+//     }
+// }
 
 function getAllUsers(){
     $pdo = Database::getInstance()->getConnection();
@@ -99,8 +103,6 @@ function editUser($id, $fname, $username, $password, $email){
     // echo $update_user_set->debugDumpParams();
     // exit;
 
-    //TODO: if everything goes well, redirect user to index.php
-    // Otherwise, return some error message...
     if($update_user_result){
         redirect_to('index.php');
     }else{
@@ -118,11 +120,12 @@ function deleteUser($id){
         )
     );
 
-    //If everything went through, redirect to admin_deleteuser.php
-    //Otherwise, return false
     if($delete_user_result && $delete_user_set->rowCount() > 0){
-        redirect_to('admin_deleteuser.php');
+        $message = 'User Deleted';
+        return json_encode($message);
+        
     }else{
-        return false;
+        $message = 'There Was an Error Deleting the user';
+        return json_encode($message);
     }
 }

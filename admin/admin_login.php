@@ -13,6 +13,6 @@
         }else{
             $message = 'Please fill out the required field';
         }
-
+        
         echo $message;
     }

@@ -26,10 +26,6 @@ import router from "./components/Router.js";
         this.showNav = true;
       },
 
-      hideNav(){
-        this.showNav = false;
-      },
-
       logout() {
         // push user back to login page
         this.$router.push({ name: "login" });
@@ -44,6 +40,15 @@ import router from "./components/Router.js";
         }
       }
 
+    },
+
+    updated: function(){
+
+      if (this.user.admin === 1 || this.user.admin === "1"){
+        this.administrator = true;
+      } else {
+        this.administrator = false;
+      }
     },
     
     created: function(){
@@ -64,6 +69,11 @@ import router from "./components/Router.js";
         this.$router.push({ name: "kids" })
       }  else if (this.user.permissions > 1 || this.user.permissions > "1") {
         this.$router.push({ name: "adults" })
+      }
+      
+      if (this.user.admin === 1 || this.user.admin === "1"){
+        this.administrator = true;
+        console.log("admin");
       }
   },
 

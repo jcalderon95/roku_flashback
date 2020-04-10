@@ -2,6 +2,10 @@ import LoginComponent from "./LoginComponent.js";
 import AllUsers from "./AllUsers.js";
 import AdultsProfile from "./AdultsProfile.js";
 import KidsProfile from "./KidsProfile.js";
+import ManageUsers from "./ManageUsers.js";
+import AddUser from "./AddUser.js";
+
+
 
 
 const routes = [
@@ -9,7 +13,11 @@ const routes = [
       { path: '/login', name: "login", component: LoginComponent },
       { path: '/users', name: "users", component: AllUsers },
       { path: '/home-adults', name: "adults", component: AdultsProfile },
-      { path: '/home-kids', name: "kids", component: KidsProfile }
+      { path: '/home-kids', name: "kids", component: KidsProfile },
+      { path: '/manage-users', name: "manageUsers", component: ManageUsers},
+      { path: '/add-user', name: "addUser", component: AddUser}
+
+
 ]
 
 const router = new VueRouter({
