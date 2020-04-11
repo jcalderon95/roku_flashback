@@ -9,6 +9,7 @@
     padding-left: 15px;
     padding-right: 15px;
     border-radius: 5px;
+    animation: fadeAnim 1s 1 0s ease;
 
 
 
@@ -53,6 +54,8 @@
             font-style: normal;
             font-size: 18px;
             margin-top: 15px;
+            animation: fadeAnim 1s 1 0s ease;
+
         }
 
         label{

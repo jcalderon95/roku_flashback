@@ -12,11 +12,18 @@ header{
 
         #navLogo{
             width: 130px;
+            cursor: pointer;
+            transition: transform .3s;
+
+            &:hover{
+                transform: scale(1.03);
+            } 
         }
 
         nav{
             ul{
               display: flex;
+              animation: fadeAnim 1s 1 0s ease;
 
               li{
                   margin-left: 30px;
@@ -30,9 +37,12 @@ header{
                     font-family: $main-font;
                     font-weight: 400;
                     font-style: normal;
+                    transition: transform .3s;
 
                     &:hover{
                       color: rgb(187, 187, 186);
+                      transform: scale(1.03);
+
                     }
                 }
 
@@ -52,6 +62,7 @@ header{
             height: 45px;
             margin-right: 8px;
             cursor: pointer;
+            animation: fadeAnim 1s 1 0s ease;
             transition: transform .3s;
 
             &:hover{

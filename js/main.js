@@ -85,9 +85,9 @@ import router from "./components/Router.js";
       }
       
       if (this.user.permissions === 1 || this.user.permissions === "1") {
-        this.$router.push({ name: "kids" })
+        this.$router.push({ name: "kids" }).catch(err => { });
       }  else if (this.user.permissions > 1 || this.user.permissions > "1") {
-        this.$router.push({ name: "adults" })
+        this.$router.push({ name: "adults" }).catch(err => { });
       }
       
       if (this.user.admin === 1 || this.user.admin === "1"){

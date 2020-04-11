@@ -1,5 +1,7 @@
 #loginCon{
     background-color: $background_color;
+    animation: fadeAnim 1s 1 0s ease;
+
 
 
     #login{
@@ -27,6 +29,8 @@
         font-style: normal;
         font-size: 18px;
         margin-top: 15px;
+        animation: fadeAnim 1s 1 0s ease;
+
     }
 
     form{

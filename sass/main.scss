@@ -21,3 +21,21 @@ body{
 }
 
 @import url("https://use.typekit.net/itk1gfw.css");
+
+
+@keyframes fadeAnim{
+    0%{
+        opacity: 0;
+        }
+    100%{
+        opacity: 1;
+        }
+}
+
+.list-enter-active, .list-leave-active {
+    transition: all 1s;
+  }
+  .list-enter, .list-leave-to /* .list-leave-active below version 2.1.8 */ {
+    opacity: 0;
+    transform: translateY(30px);
+  }

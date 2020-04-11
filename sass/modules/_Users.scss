@@ -6,7 +6,8 @@
     padding-bottom: 40px;
     margin-bottom: 40px;
     border-radius: 5px;
-
+    animation: fadeAnim 1s 1 0s ease;
+    
     h2{
         font-size: 35px;
         color: #ffffff;
@@ -29,6 +30,7 @@
         .user{
             width: 100%;
             max-width: 140px;
+            animation: fadeAnim 1s 1 0s ease;
             
             .avatar{
                 max-width: 140px;
