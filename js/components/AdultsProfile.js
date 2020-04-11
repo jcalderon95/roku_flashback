@@ -6,10 +6,14 @@ export default {
     <div id="AdultsProfile">
 		<h1 class="hidden">Adutls Profile</h1>
 
-		<div class="filterButtons">
-			<button @click="fetchVideo()">Movies</button>
-			<button @click="fetchSeries()">Series</button>
-			<button @click="fetchAudio()">Audio</button>
+		<div class="hero">
+			<img src="images/adults_hero.jpg" alt="Adults Hero Banner" class="heroImage">
+		</div>
+
+		<div class="filterButtonsCon">
+		<img src="images/adults_movies.png" class="filterButton" @click="fetchVideo()">
+		<img src="images/adults_series.png" class="filterButton" @click="fetchSeries()">
+		<img src="images/adults_music.png" class="filterButton" @click="fetchAudio()">
 		</div>
 
 		<div v-if="showPlayer" class="player">
@@ -30,7 +34,7 @@ export default {
 		<div class="mediaCon">
 			<div class="mediaItem" v-for="item in media" @click="showItem(item)">
 				<h2>{{ item.Title }}</h2>
-				<img :src="'images/' + item.Image"  alt="media thumb" >
+				<img :src="'images/' + item.Image"  alt="media thumb" class="thumbnail">
 			</div>
 		</div>
     </div>

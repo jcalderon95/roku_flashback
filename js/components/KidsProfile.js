@@ -5,11 +5,14 @@ export default {
     template: `
     <div id="KidsProfile">
 		<h1 class="hidden">Kids Profile</h1>
+		<div class="hero">
+			<img src="images/kids_hero.jpg" alt="Kids Hero Banner" class="heroImage">
+		</div>
 
-		<div class="filterButtons">
-			<button @click="fetchVideo()">Movies</button>
-			<button @click="fetchSeries()">Series</button>
-			<button @click="fetchAudio()">Audio</button>
+		<div class="filterButtonsCon">
+			<img src="images/kids_movies.png" class="filterButton" @click="fetchVideo()">
+			<img src="images/kids_series.png" class="filterButton" @click="fetchSeries()">
+			<img src="images/kids_music.png" class="filterButton" @click="fetchAudio()">
 		</div>
 
 		<div v-if="showPlayer" class="player">
@@ -29,8 +32,7 @@ export default {
 
 		<div class="mediaCon">
 			<div class="mediaItem" v-for="item in media" @click="showItem(item)">
-				<h2>{{ item.Title }}</h2>
-				<img :src="'images/' + item.Image"  alt="media thumb" >
+				<img :src="'images/' + item.Image"  alt="media thumb" class="thumbnail">
 			</div>
 		</div>
     </div>

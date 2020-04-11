@@ -39,6 +39,14 @@ import router from "./components/Router.js";
         if(localStorage.getItem("cachedVideo")){
           localStorage.removeItem("cachedVideo");
         }
+      },
+
+      checkFooter(){
+        if(this.$route.name === "kids" || this.$route.name === "adults" ){
+          this.showFooter = true;
+        } else {
+          this.showFooter = false;
+        }
       }
 
     },
@@ -56,9 +64,10 @@ import router from "./components/Router.js";
       }
 
       if(this.$route.name === "manageUsers"){
-        
         this.showNav = true;
       }
+
+      this.checkFooter();
     },
     
     created: function(){
@@ -85,6 +94,9 @@ import router from "./components/Router.js";
         this.administrator = true;
         console.log("admin");
       }
+
+      this.checkFooter();
+
   },
 
 
