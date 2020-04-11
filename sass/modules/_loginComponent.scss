@@ -1,21 +1,36 @@
 #loginCon{
     background-color: $background_color;
+    animation: fadeAnim 1s 1 0s ease;
+
+
 
     #login{
         background-color: #12162e;
         height: 400px;
-        width: 300px;
+        max-width: 300px;
         margin: 0 auto;
         padding-top: 50px;
         // padding-bottom: 150px;
         padding-left: 30px;
         padding-right: 30px;
     h2{
-        font-size: 50px;
+        font-size: 35px;
         color: #ffffff;
         font-family: $main-font;
         font-weight: 600;
         font-style: normal; 
+    }
+
+    .errorMsg{
+        color: #a82f27;
+        text-align: center;
+        font-family: $main-font;
+        font-weight: 400;
+        font-style: normal;
+        font-size: 18px;
+        margin-top: 15px;
+        animation: fadeAnim 1s 1 0s ease;
+
     }
 
     form{
@@ -51,11 +66,17 @@
             background-color: #252941;
             border: none;
             border-radius: 2px;
-            font-size: 25px;
+            font-size: 20px;
             color: #ffffff;
             font-family: $main-font;
             font-weight: 400;
-            font-style: normal; 
+            font-style: normal;
+            cursor: pointer;
+            transition: transform .3s;
+
+            &:hover{
+                transform: scale(1.03);
+            } 
         }
     }
     

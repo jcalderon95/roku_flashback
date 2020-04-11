@@ -19,6 +19,9 @@ Building a Roku "flashback" media streaming website featuring music, tv shows an
 * Edit the password and leave it blank
 * In your browser type the adress ```http://localhost:8888/roku_flashback/```
 
+## Note
+Video and Audio files are not provided due to the size of the files, however, they can be provided if requested.
+
 
 ## Built with/Tools Used
 * **HTML5**
@@ -32,6 +35,6 @@ Building a Roku "flashback" media streaming website featuring music, tv shows an
 
 ## Author
 
-* **Jimmy Calderon - Web Developer**
+* **Jimmy Calderon - Front-End and Back-End Developer**
 * **Sonali Victor - Designer**
 
