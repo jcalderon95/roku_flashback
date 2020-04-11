@@ -23,7 +23,7 @@ function login($username, $password, $ip){
             )
         );
 
-        while($found_user = $user_check->fetch(PDO::FETCH_ASSOC)){
+        if($found_user = $user_check->fetch(PDO::FETCH_ASSOC)){
 
 
             $user = array();
@@ -37,11 +37,14 @@ function login($username, $password, $ip){
 
 
             return json_encode($user);
+        }else{
+            $message = 'Incorrect password';
+            return json_encode($message);
         }
 
     } else {
         //User does not exist
         $message = 'User does not exist';
-        return $message;
+        return json_encode($message);
     }    
 }

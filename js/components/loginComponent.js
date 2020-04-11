@@ -6,13 +6,13 @@ export default {
         <div id="login">
         <h2>Sign In</h2>
             <form>
-                <h3 v-if="authenticationFailed">Authentication failed, please try again</h3>
-                <h3 v-if="formFilled">A username and password must be present</h3>
+                <h3 v-if="authenticationFailed" class="errorMsg">Authentication failed, please try again!</h3>
+                <h3 v-if="formFilled" class="errorMsg">A Username and Password Must Be Present</h3>
                 <label for="">Username</label>
                 <input type="text" name="username" v-model="input.username" placeholder="Username" required>
 
                 <label for="">Password</label>
-                <input type="text" name="password" v-model="input.password" placeholder="Passoword" required>
+                <input type="password" name="password" v-model="input.password" placeholder="Password" required>
 
                 <button v-on:click.prevent="login()" type="submit" class="submitButton">SIGN IN</button>
             </form>
@@ -33,7 +33,9 @@ export default {
     },
 
     methods: {
-        login() {   
+        login() {
+            this.authenticationFailed = false;
+            this.formFilled = false;   
 
             if (this.input.username != "" && this.input.password != "") {
                 // fetch the user from the DB
@@ -52,15 +54,17 @@ export default {
                     .then(res => res.json())
                     .then(data => {
                         if (typeof data != "object") { // means that we're not getting a user object back
-                            // console.warn(data);
-                            // // // just for testing
-                            alert("authentication failed, please try again");
-                            // console.log("wrong");
+                            //console.warn(data);
+
+                            this.input.username = "";
+                            this.input.password = "";
                             this.authenticationFailed = true;
                         } else {
                             this.$emit("authenticated", true, data);
                             this.formFilled = false;
                             this.$router.replace({ name: "users" });
+                            this.authenticationFailed = false;
+
                         }
                     })
                     .catch(function (error) {
@@ -68,7 +72,7 @@ export default {
 
                     });
             } else {
-                console.log("A username and password must be present");
+
                 this.formFilled = true;
             }
         }

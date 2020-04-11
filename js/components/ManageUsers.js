@@ -3,22 +3,24 @@ export default {
 
     template: `
     <div>
-    
-        <h1>Manage Users</h1>
-
-        <div id="allUsers">
-
-            <div v-for="(user, index) in userList" :key="index">
-                <img :src="'images/users/' + user.avatar" >
-                <p>{{ user.userfname }}</p>
-                <button @click="navToEditUser(user)">Edit</button>
-                <button @click="deletUser(user)">Delete</button>
-            </div>
+        <div class="allUsers">
+            <h2>Manage Users</h2>
             
-            <div>
- 
-                <img src="images/add.svg" alt="Add Button Image" width="50px" @click="navToAddUser">
-                <h3>Add User</h3>
+            <div class="usersCon">
+                <div v-for="(user, index) in userList" :key="index" class="user">
+                    <img :src="'images/users/' + user.avatar" class="avatar">
+                    <h3>{{ user.userfname }}</h3>
+
+                    <div class="conButtons">
+                        <button class="editButton" @click="navToEditUser(user)">Edit</button>
+                        <button class="editButton cancelButton" @click="deletUser(user)">Delete</button>
+                    </div>
+                </div>
+
+                <div class="user">
+                    <img src="images/add.svg" alt="Add Button Image" @click="navToAddUser" class="avatar">
+                    <h3>Add User</h3>
+                </div>
             </div>
 
             

@@ -2,14 +2,18 @@
 @import "modules/_nav";
 @import "modules/_footer";
 @import "modules/_loginComponent";
+@import "modules/_Users";
+@import "modules/_manageUsers";
+
+
 
 .hidden{
     display: none;
 }
 
 body{
-    // background-color: $background_color;
-    background-color: #ffffff;
+    background-color: $background_color;
+    // background-color: #ffffff;
 }
 
 @import url("https://use.typekit.net/itk1gfw.css");

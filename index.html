@@ -14,65 +14,72 @@
 </head>
 <body>
     <h1 class="hidden">Roku Video Streaming App</h1>
+<div id="app">
+    <main>
+        <header>
+            <div class="headerCon">
+                <div class="logoCon">
+                    <img id="navLogo" src="images/logo.svg" alt="Roku Logo">
+                </div>
 
-<main id="app">
-    <header>
-        <div class="headerCon">
-            <div class="logoCon">
-                <img id="navLogo" src="images/logo.svg" alt="Roku Logo">
-            </div>
+                <h2 class="hidden">Main Navigation</h2>
+                <nav>
 
-            <h2 class="hidden">Main Navigation</h2>
-            <nav>
+                    <ul v-if="showNav">
+                        
+                        <li><router-link :to="{ name: 'users'}">
+                            <a href="">Users</a>
+                        </router-link></li>
+                        
+                        <!-- <li ><a href="#">Movies</a></li>
+                        <li ><a href="#">TV Series</a></li>
+                        <li><a href="#">Music</a></li> -->
+                    </ul>
+                </nav>
 
-                <ul v-if="showNav">
+                <div id="userCon" v-if="authenticated">
                     
-                    <li ><router-link :to="{ name: 'users'}">
-                        <a href="#">Users</a>
-                    </router-link></li>
-                    
-                    <!-- <li ><a href="#">Movies</a></li>
-                    <li ><a href="#">TV Series</a></li>
-                    <li><a href="#">Music</a></li> -->
-                </ul>
-            </nav>
+                    <router-link :to="{ name: 'manageUsers'}">
+                        <img v-if="administrator" src="images/settings.svg" alt="Log Button" class="navButton" >
+                    </router-link>
 
-            <div id="userCon" v-if="authenticated">
-                <router-link :to="{ name: 'manageUsers'}">
-                    <img v-if="administrator" src="images/settings.svg" alt="Log Button" id="avatarSmall">
-                </router-link>
-
-                <img v-if="showNav" :src="'images/users/' + user.avatar" alt="User Avatar" id="avatarSmall">
-                <img src="images/log-in-out.svg" alt="Log Button" id="logButton" @click="logout">
-            </div>
-        
+                    <img v-if="showNav" :src="'images/users/' + user.avatar" alt="User Avatar" class="navButton" >
+                    <img src="images/log-in-out.svg" alt="Log Button" @click="logout" class="navButton">
+                </div>
             
-        </div>
-    </header>
-
-    <router-view @shownav="ShowNavigation" @authenticated="setAuthenticated"/>
-    
-    
-</main>
-
-<footer>
-    <h2 class="hidden">Footer</h2>
-        <div id="footerCon">
-
-            <div class="logoConFooter">
-                <img id="footerLogo" src="images/logo.svg" alt="Roku Logo">
+                
             </div>
+        </header>
 
-            <div id="socialMediaCon">
-                <img src="images/icon-facebook.svg" class="socialIcon" alt="Facebook Icon">
-                <img src="images/icon-twitter.svg" class="socialIcon" alt="Twitter Icon">
-                <img src="images/icon-youtube.svg" class="socialIcon" alt="Youtube Icon">
-            </div>
+        <router-view @shownav="ShowNavigation" @authenticated="setAuthenticated"/>
+        
+        
+    </main>
 
-            <h3 id="copyRight">© Copyright 2020 Roku, Inc.</h3>
-        </div> 
-</footer>
+    <footer v-if="showFooter">
+        <h2 class="hidden">Footer</h2>
+            <div id="footerCon">
 
+                <div id="logoConFooter">
+                    <img id="footerLogo" src="images/logo.svg" alt="Roku Logo">
+                </div>
+
+                <div id="socialMediaCon">
+                    <a href="https://www.facebook.com" target="_blank">
+                        <img src="images/icon-facebook.svg" class="socialIcon" alt="Facebook Icon">
+                    </a>
+                    <a href="https://twitter.com/" target="_blank">
+                        <img src="images/icon-twitter.svg" class="socialIcon" alt="Twitter Icon">
+                    </a>
+                    <a href="https://www.youtube.com" target="_blank">
+                        <img src="images/icon-youtube.svg" class="socialIcon" alt="Youtube Icon">
+                    </a>
+                </div>
+
+                <h3 id="copyRight">© Copyright 2020 Roku, Inc.</h3>
+            </div> 
+    </footer>
+</div>
 <script type="module" src="js/main.js"></script>
 
 

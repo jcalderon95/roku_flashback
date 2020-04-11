@@ -1,6 +1,7 @@
 footer{
     background-color: #252941;
     margin-top: 60px;
+    padding: 1px;
 
     #footerCon{
         max-width: 1200px;
@@ -8,18 +9,32 @@ footer{
         padding-left: 20px;
         padding-right: 20px;
         padding-top: 20px;
-        display: flex;
-        flex-direction: row;
 
         #footerLogo{
             width: 130px;
-            margin-right: 40px;
+            display: block;
+            margin: 0 auto;
+            margin-bottom: 10px;
         }
 
-        .socialIcon{
-            width: 40px;
-            height: 40px;
+        #socialMediaCon{
+            width: 150px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-evenly;
+            margin-bottom: 25px;
+
+            .socialIcon{
+                width: 40px;
+                height: 40px;
+                transition: transform .3s;
+
+                &:hover{
+                    transform: scale(1.08);
+                }
+            }
         }
+
 
         #copyRight{
             font-size: 20px;
@@ -27,9 +42,19 @@ footer{
             font-family: $main-font;
             font-weight: 400;
             font-style: normal;
-            margin-left: auto;
+            text-align: center;
+            margin-bottom: 25px;
+
         }
     }
+  
+}
 
-    
+@media screen and (min-width: 700px){
+    #footerCon{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+
+    }
 }

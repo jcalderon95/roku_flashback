@@ -11,6 +11,7 @@ import router from "./components/Router.js";
       authenticated: false,
       administrator: false,
       showNav: false,
+      showFooter: false,
       user: [],
 
     },
@@ -49,6 +50,15 @@ import router from "./components/Router.js";
       } else {
         this.administrator = false;
       }
+
+      if(this.$route.name === "users"){
+        this.showNav = false;
+      }
+
+      if(this.$route.name === "manageUsers"){
+        
+        this.showNav = true;
+      }
     },
     
     created: function(){
@@ -82,8 +92,7 @@ import router from "./components/Router.js";
   }).$mount("#app");
 
   router.beforeEach((to, from, next) => {
-    // console.log('router guard fired!', to, from, vm.authenticated);
-
+  
     if (vm.authenticated == false) {
       next("/login");
     } else {

@@ -2,11 +2,13 @@ export default {
     name: "AllUsers",
 
     template: `
-	<div id="allUsers">
-
-		<div v-for="(user, index) in userList" :key="index" @click="navToUserHome(user)">
-			<img :src="'images/users/' + user.avatar" class="rounded-circle img-fluid">
-			<p>{{ user.userfname }}</p>
+	<div class="allUsers">
+		<h2>Who is Watching?</h2>
+		<div class="usersCon">
+			<div v-for="(user, index) in userList" :key="index" @click="navToUserHome(user)" class="user">
+				<img :src="'images/users/' + user.avatar" class="avatar">
+				<h3>{{ user.userfname }}</h3>
+			</div>
 		</div>
 
     </div>
