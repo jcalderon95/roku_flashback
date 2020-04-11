@@ -60,6 +60,13 @@
         .thumbnail{
             max-width: 300px;
             width: 100%;
+            cursor: pointer;
+            transition: transform .3s;
+
+            &:hover{
+                transform: scale(1.03);
+            } 
+            
         }
     }
 }

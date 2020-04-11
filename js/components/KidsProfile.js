@@ -15,19 +15,23 @@ export default {
 			<img src="images/kids_music.png" class="filterButton" @click="fetchAudio()">
 		</div>
 
-		<div v-if="showPlayer" class="player">
-			<span @click="hidePlayer" >X</span>
-			<h2>{{ currentMediaItem.Title }}</h2>
-			<h2>Genre: {{ currentMediaItem.Genre }}</h2>
-			<h2>{{ currentMediaItem.Year }}</h2>
-			<h2>{{ currentMediaItem.Source }}</h2>
+		<div v-if="showPlayer" class="playerCon" id="player">
+			<div class="player">
+				<span class="closePlayer" @click="hidePlayer">X</span>
+				<h2>{{ currentMediaItem.Title }}</h2>
+				<h2>Genre: {{ currentMediaItem.Genre }}</h2>
+				<h2>{{ currentMediaItem.Year }}</h2>
+				<p class="media-details" v-html="currentMediaItem.Description">Storyline here</p>
 
-			<video v-if="currentMediaItem.Type != 'Music' " autoplay controls muted :src=" 'video/' + currentMediaItem.Source" class="fs-video"></video>
+				<div class="mediaPlayer">
+					<video v-if="currentMediaItem.Type != 'Music' " autoplay controls muted :src=" 'video/' + currentMediaItem.Source" class="fs-video"></video>
 
-			<audio v-else autoplay controls :src="'audio/' + currentMediaItem.Source ">
-					Your browser does not support the
-					<code>audio</code> element.
-			</audio>
+					<audio v-else autoplay controls :src="'audio/' + currentMediaItem.Source ">
+							Your browser does not support the
+							<code>audio</code> element.
+					</audio>
+				</div>
+			</div>	
 		</div>
 
 		<div class="mediaCon">
